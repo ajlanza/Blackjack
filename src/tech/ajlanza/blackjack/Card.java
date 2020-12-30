@@ -7,16 +7,10 @@ public class Card {
     boolean turnedUp;
 
     public Card() {
-        this.suit = "Flamingos";
-        this.cardFace = "14";
-        this.value = 14;
-        this.turnedUp = false;
+        this("Three", "Spades", 1, false);
     }
     public Card(String cardFace, String suit) {
-        this.suit = suit;
-        this.cardFace = cardFace;
-        this.value = 1;
-        this.turnedUp = false;
+        this(cardFace, suit, 1, false);
     }
 
     public Card(String cardFace, String suit, int value, boolean turnedUp) {
@@ -24,5 +18,10 @@ public class Card {
         this.cardFace = cardFace;
         this.value = value;
         this.turnedUp = turnedUp;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Card: %s of %s (Value: %d, Turned Up: %b)", this.cardFace, this.suit, this.value, this.turnedUp);
     }
 }
