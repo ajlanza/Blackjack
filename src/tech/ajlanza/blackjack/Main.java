@@ -14,6 +14,8 @@ public class Main {
         Card aceOfSpades =  new Card("Ace", "Spades", 1, true);
         Card threeOfDiamonds =  new Card("Three", "Diamonds", 3, false);
         System.out.println(aceOfSpades);
-        System.out.println(threeOfDiamonds);
+        System.out.println(sevenSpades.getCardFace());
+        sevenSpades.setSuit("Changed");
+        System.out.println(sevenSpades);
     }
 }
