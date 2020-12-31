@@ -7,7 +7,7 @@ public class Card {
     private boolean turnedUp;
 
     public Card() {
-        this(Face.THREE, Suit.SPADES, 1, false);
+        this(Face.THREE, Suit.CLUBS, 1, false);
     }
     public Card(Face cardFace, Suit suit) {
         this(cardFace, suit, 1, false);
@@ -22,7 +22,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("Card: %s of %s (Value: %d, Turned Up: %b)", this.cardFace, this.suit, this.value, this.turnedUp);
+        return String.format("%s%s%s", this.getCardFace(), this.getSuit(), this.isTurnedUp()?"\u2191":"\u2193");
     }
 
     public Suit getSuit(){
