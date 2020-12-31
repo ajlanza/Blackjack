@@ -1,19 +1,19 @@
 package tech.ajlanza.blackjack;
 
 public class Card {
-    private String suit;
-    private String cardFace;
+    private Suit suit;
+    private Face cardFace;
     private int value;
     private boolean turnedUp;
 
     public Card() {
-        this("Three", "Spades", 1, false);
+        this(Face.THREE, Suit.SPADES, 1, false);
     }
-    public Card(String cardFace, String suit) {
+    public Card(Face cardFace, Suit suit) {
         this(cardFace, suit, 1, false);
     }
 
-    public Card(String cardFace, String suit, int value, boolean turnedUp) {
+    public Card(Face cardFace, Suit suit, int value, boolean turnedUp) {
         this.suit = suit;
         this.cardFace = cardFace;
         this.value = value;
@@ -25,19 +25,19 @@ public class Card {
         return String.format("Card: %s of %s (Value: %d, Turned Up: %b)", this.cardFace, this.suit, this.value, this.turnedUp);
     }
 
-    public String getSuit(){
+    public Suit getSuit(){
         return suit;
     }
 
-    public void setSuit(String suit){
+    public void setSuit(Suit suit){
         this.suit = suit;
     }
 
-    public String getCardFace(){
+    public Face getCardFace(){
         return cardFace;
     }
 
-    public void setCardFace(String cardFace){
+    public void setCardFace(Face cardFace){
         this.cardFace = cardFace;
     }
 
