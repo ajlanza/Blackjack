@@ -2,6 +2,7 @@ package tech.ajlanza.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Deck {
 
@@ -43,5 +44,14 @@ public class Deck {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    public void shuffle() {
+        Random ran = new Random();
+        for(int i = 0; i < this.getCards().size(); i = i + 1) {
+            Card c = this.getCards().remove(i);
+            int randomNumber = ran.nextInt(this.getCards().size());
+            this.getCards().add(randomNumber, c);
+        }
     }
 }
