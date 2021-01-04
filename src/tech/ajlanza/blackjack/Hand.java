@@ -5,17 +5,28 @@ import java.util.List;
 
 public class Hand {
     private List<Card> cards;
+    private HandStatus status;
 
     public List<Card> getCards(){
         return cards;
     }
 
+    public enum HandStatus {
+        OPEN, STAND, BUST
+    }
+
+
+
     public Hand(){
         this.cards = new ArrayList<>();
+        setStatus(HandStatus.OPEN);
     }
 
     public void addCard(Card card){
         this.getCards().add(card);
+        if (getValue() > 21) {
+            setStatus(HandStatus.BUST);
+        }
     }
 
     public int getValue(){
@@ -24,6 +35,14 @@ public class Hand {
             total = total + card.getValue();
         }
         return total;
+    }
+
+    public void setStatus(HandStatus status) {
+        this.status = status;
+    }
+
+    public HandStatus getStatus() {
+        return this.status;
     }
 
     @Override
