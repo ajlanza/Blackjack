@@ -10,7 +10,7 @@ public class Card {
         this(Face.THREE, Suit.CLUBS, 1, false);
     }
     public Card(Face cardFace, Suit suit) {
-        this(cardFace, suit, 1, false);
+        this(cardFace, suit, cardFace.value, false);
     }
 
     public Card(Face cardFace, Suit suit, int value, boolean turnedUp) {
