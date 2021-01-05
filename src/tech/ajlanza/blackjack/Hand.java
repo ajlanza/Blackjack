@@ -15,8 +15,6 @@ public class Hand {
         OPEN, STAND, BUST
     }
 
-
-
     public Hand(){
         this.cards = new ArrayList<>();
         setStatus(HandStatus.OPEN);
