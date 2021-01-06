@@ -63,6 +63,9 @@ public class Main {
             game.playerMove(action);
         }
 
+        System.out.println("The dealer's turn");
+        game.dealerMove();
+
         System.out.println(game.outcome());
         System.out.println(game);
     }
