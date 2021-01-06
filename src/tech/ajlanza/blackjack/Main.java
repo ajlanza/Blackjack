@@ -15,8 +15,8 @@ public class Main {
             String menuChoice = getMenuChoice(scanner);
             keepPlaying = menuChoice.equalsIgnoreCase("s");
             if(keepPlaying) {
-
                 System.out.println("This is one game play here");
+                doGame(scanner);
             }
         }
         System.out.println("Thanks for playing!");
@@ -34,5 +34,36 @@ public class Main {
             }
         }
         return menuChoice;
+    }
+
+    public Game.Action getPlayerChoice(Scanner scanner) {
+        boolean isValid = false;
+        String input = "";
+        while(!isValid){
+            System.out.println("What do you want to do? Hit (h) or Stand (s)?");
+            input = scanner.next();
+            isValid = input.equalsIgnoreCase("h") || input.equalsIgnoreCase("s");
+            if(!isValid) {
+                System.out.println("Invalid choice. h for Hit and s for Stand");
+            }
+        }
+        return Game.Action.valueOf(input.equalsIgnoreCase("h") ? "HIT" : "STAND");
+    }
+
+    public void doGame(Scanner scanner) {
+        Game game = new Game();
+        System.out.println("The initial game:");
+        System.out.println(game);
+
+        System.out.println("Your turn");
+        while(game.isPlayerTurn()) {
+            System.out.printf("Your hand: %s\n", game.getPlayer());
+            Game.Action action = getPlayerChoice(scanner);
+            System.out.println(action);
+            game.playerMove(action);
+        }
+
+        System.out.println(game.outcome());
+        System.out.println(game);
     }
 }
