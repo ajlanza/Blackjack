@@ -11,10 +11,6 @@ public class Hand {
         return cards;
     }
 
-    public enum HandStatus {
-        OPEN, STAND, BUST
-    }
-
     public Hand(){
         this.cards = new ArrayList<>();
         setStatus(HandStatus.OPEN);
@@ -40,7 +36,7 @@ public class Hand {
     }
 
     public HandStatus getStatus() {
-        return this.status;
+        return status;
     }
 
     @Override

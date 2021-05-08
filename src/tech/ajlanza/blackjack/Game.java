@@ -5,11 +5,6 @@ public class Game {
     private Hand dealer;
     private Deck deck;
 
-
-    public enum Action {
-        HIT, STAND
-    }
-
     public Hand getPlayer() {
         return player;
     }
@@ -41,13 +36,14 @@ public class Game {
         getDeck().shuffle();
         getPlayer().addCard(getDeck().deal());
         getDealer().addCard(getDeck().deal());
+
         getPlayer().addCard(getDeck().deal());
         getDealer().addCard(getDeck().deal());
     }
 
     @Override
     public String toString() {
-        return String.format("Player: %s, Dealer %s", getPlayer(), getDealer());
+        return String.format("Player: %s, Dealer: %s", getPlayer(), getDealer());
     }
 
     public void playerMove(Action action) {
@@ -55,32 +51,32 @@ public class Game {
             getPlayer().addCard(getDeck().deal());
         } else {
             if(action == Action.STAND) {
-                getPlayer().setStatus(Hand.HandStatus.STAND);
+                getPlayer().setStatus(HandStatus.STAND);
             }
         }
     }
 
     public void dealerMove() {
-        while(getDealer().getValue() < 16 && getDealer().getStatus() == Hand.HandStatus.OPEN) {
+        while(getDealer().getValue() < 16 && getDealer().getStatus() == HandStatus.OPEN) {
             getDealer().addCard(getDeck().deal());
         }
-        if(getDealer().getStatus() == Hand.HandStatus.OPEN) {
-            getDealer().setStatus(Hand.HandStatus.STAND);
+        if(getDealer().getStatus() == HandStatus.OPEN) {
+            getDealer().setStatus(HandStatus.STAND);
         }
     }
 
     public boolean isPlayerTurn() {
-        return getPlayer().getStatus() == Hand.HandStatus.OPEN;
+        return getPlayer().getStatus() == HandStatus.OPEN;
     }
 
     public String outcome() {
-        if(getPlayer().getStatus() == Hand.HandStatus.BUST && getDealer().getStatus() == Hand.HandStatus.BUST){
+        if(getPlayer().getStatus() == HandStatus.BUST && getDealer().getStatus() == HandStatus.BUST){
             return "Everyone BUSTED! No winner!";
         }
-        if(getPlayer().getStatus() == Hand.HandStatus.BUST && getDealer().getStatus() == Hand.HandStatus.STAND) {
+        if(getPlayer().getStatus() == HandStatus.BUST && getDealer().getStatus() == HandStatus.STAND) {
             return "You BUST! Dealer wins!";
         }
-        if(getPlayer().getStatus() == Hand.HandStatus.STAND && getDealer().getStatus() == Hand.HandStatus.BUST) {
+        if(getPlayer().getStatus() == HandStatus.STAND && getDealer().getStatus() == HandStatus.BUST) {
             return "Dealer BUST! You win!";
         }
         if(getPlayer().getValue() > getDealer().getValue()) {

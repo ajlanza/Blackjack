@@ -36,7 +36,7 @@ public class Main {
         return menuChoice;
     }
 
-    public Game.Action getPlayerChoice(Scanner scanner) {
+    public Action getPlayerChoice(Scanner scanner) {
         boolean isValid = false;
         String input = "";
         while(!isValid){
@@ -47,7 +47,7 @@ public class Main {
                 System.out.println("Invalid choice. h for Hit and s for Stand");
             }
         }
-        return Game.Action.valueOf(input.equalsIgnoreCase("h") ? "HIT" : "STAND");
+        return Action.valueOf(input.equalsIgnoreCase("h") ? "HIT" : "STAND");
     }
 
     public void doGame(Scanner scanner) {
@@ -58,7 +58,7 @@ public class Main {
         System.out.println("Your turn");
         while(game.isPlayerTurn()) {
             System.out.printf("Your hand: %s\n", game.getPlayer());
-            Game.Action action = getPlayerChoice(scanner);
+            Action action = getPlayerChoice(scanner);
             System.out.println(action);
             game.playerMove(action);
         }
